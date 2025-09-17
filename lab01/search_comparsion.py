@@ -118,3 +118,22 @@ def plot_results(results: Dict[str, Dict[int, float]]) -> None:
     plt.grid(True)
     plt.savefig('results_log.png')
     plt.close()
+
+
+if __name__ == "__main__":
+    # Размеры массивов, которые будем тестировать.
+    sizes = [1000, 2000, 5000, 10000, 20000]
+
+    # Запускаем эксперименты.
+    results = run_experiments(sizes)
+
+    # Печатаем результаты в читаемом виде.
+    print("Результаты (среднее время в секундах):")
+    for alg in ['linear', 'binary']:
+        print(f"\n=== {alg.upper()} SEARCH ===")
+        for n in sorted(results[alg].keys()):
+            print(f"n = {n:6d} --> {results[alg][n]:.8f} s")
+
+    # Строим и сохраняем графики.
+    plot_results(results)
+    print("\nГрафики сохранены: results_linear.png, results_log.png")
