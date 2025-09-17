@@ -17,3 +17,24 @@ def linear_search(arr: List[int], target: int) -> Optional[int]:
     # O(1) - если элемент не найден.
     return None  # O(1)
 # Общая сложность: O(n).
+
+
+def binary_search(arr: List[int], target: int) -> Optional[int]:
+    """Функция бинарного поиска."""
+    # O(1) - инициализация границ.
+    left = 0  # O(1)
+    right = len(arr) - 1  # O(1)
+    # O(log n) - количество итераций фукнции в худшем случае.
+    while left <= right:  # O(log n)
+        # O(1) - вычисление среднего.
+        mid = (left + right) // 2  # O(1)
+        # O(1) - доступ к элементу.
+        if arr[mid] == target:  # O(1)
+            return mid  # O(1)
+        # O(1) - сравнение и сдвиг границ.
+        if arr[mid] < target:  # O(1)
+            left = mid + 1  # O(1)
+        else:
+            right = mid - 1  # O(1)
+    return None  # O(1)
+# Общая сложность: O(log n).
