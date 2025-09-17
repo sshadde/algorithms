@@ -1,8 +1,4 @@
-'''
-sum_analysis.py
-Чтение двух чисел из stdin или файла, вывод их суммы.
-'''
-
+"""Чтение двух чисел из stdin или файла, вывод их суммы."""
 import sys  # O(1). Импорт для работы со stdin/stdout.
 import timeit  # O(1). Модуль для точных замеров времени.
 import random  # O(1). Для генерации тестовых массивов.
@@ -15,10 +11,12 @@ from typing import Optional, List, Iterable, Dict  # O(1). Аннотации т
 
 
 def calculate_sum_from_file(path: str) -> Optional[int]:
-    '''
+    """
+    Функция сложения из файла.
+
     Открывает файл, ожидает ровно два числа (на одной или на двух строках),
     преобразует их в int и возвращает их сумму.
-    '''
+    """
     try:
         with open(path, 'r', encoding='utf-8') as fh:  # O(1). Открытие файла.
             content = fh.read()  # O(F). Чтение файла, F - размер в символах.
@@ -47,10 +45,12 @@ def calculate_sum_from_file(path: str) -> Optional[int]:
 
 
 def calculate_sum_from_stdin() -> None:
-    '''
+    """
+    Функция сложения со стандартного ввода.
+
     Считывает две строки из stdin, пытается преобразовать их в целые
     и печатает сумму. При ошибке выводит сообщение.
-    '''
+    """
     line1 = sys.stdin.readline()  # O(1). Чтение первой строки.
     if not line1:  # O(1).
         print('Ошибка: ожидалась первая строка с целым числом.')  # O(1).
@@ -77,10 +77,12 @@ def calculate_sum_from_stdin() -> None:
 
 
 def sum_array(arr: Iterable[int]) -> int:
-    '''
+    """
+    Функция сложения элементов массива.
+
     Возвращает сумму всех элементов коллекции.
     Теоретическая сложность: O(N).
-    '''
+    """
     total = 0  # O(1). Инициализация.
     for x in arr:  # O(N). Проход по всем элементам.
         total += x  # O(1). Сложение и присваивание.
@@ -89,10 +91,12 @@ def sum_array(arr: Iterable[int]) -> int:
 
 
 def measure_time(func, data, repeats: int = 3) -> float:
-    '''
+    """
+    Функция измерения времени.
+
     Измеряет среднее время выполнения func(data) в миллисекундах.
     Используется timeit.timeit для более стабильных измерений.
-    '''
+    """
     total = timeit.timeit(lambda: func(data), number=repeats)  # O(rep*cost).
     avg_ms = (total / repeats) * 1000.0  # O(1). Конвертация в миллисекунды.
     return avg_ms  # O(1).
@@ -102,10 +106,12 @@ def measure_time(func, data, repeats: int = 3) -> float:
 def run_measurements(out_dir: str,
                      sizes: List[int],
                      repeats_policy: Optional[Dict[int, int]] = None) -> None:
-    '''
+    """
+    Функция запуска измерений времени.
+
     Проводит замеры sum_array для каждого N в sizes.
     Сохраняет CSV, отчёт (Markdown) и пытается построить PNG-график.
-    '''
+    """
     if repeats_policy is None:
         repeats_policy = {}
 
@@ -144,10 +150,10 @@ def run_measurements(out_dir: str,
         print('matplotlib не установлен. PNG график не будет создан.')
         png_path = None
     else:
-        Ns = [r['N'] for r in results]
+        ns = [r['N'] for r in results]
         avgs = [r['avg_ms'] for r in results]
         plt.figure(figsize=(8, 5))
-        plt.plot(Ns, avgs, marker='o', linestyle='-')
+        plt.plot(ns, avgs, marker='o', linestyle='-')
         plt.xlabel('Размер массива (N)')
         plt.ylabel('Время выполнения (мс)')
         plt.title('Зависимость времени выполнения от N. O(N) ожидается.')
@@ -189,13 +195,15 @@ def run_measurements(out_dir: str,
 
 
 def main() -> None:
-    '''
+    """
+    Основная функция.
+
     Обработчик аргументов. Поддерживает:
     --sum-file <path>    : читать из файла.
     --run-all            : провести замеры и сохранить результаты.
     --out-dir <path>     : каталог для результатов.
     --sizes <csv>        : перечень размеров N через запятую.
-    '''
+    """
     # Простая обработка командной строки.
     if len(sys.argv) >= 3 and sys.argv[1] == '--sum-file':  # O(1).
         path = sys.argv[2]  # O(1).
