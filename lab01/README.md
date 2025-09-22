@@ -5,3 +5,5 @@
 - Процессор: Intel64 Family 6 Model 158 Stepping 9, GenuineIntel
 - Число логических ядер: 4
 - Оперативная память: 16 GB DDR4
+## Графики
+![](results_linear.png)
