@@ -157,4 +157,4 @@ DIR venv/
 ![Сравнение количества вызовов](report/fibonacci_calls_comparison.png)
 
 Сравнение времени выполнения
-![Сравнение времени выполнения](fibonacci_time_comparison.png)
+![Сравнение времени выполнения](report/fibonacci_time_comparison.png)
