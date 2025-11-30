@@ -1,3 +1,4 @@
+"""Анализ производительности."""
 import time
 import random
 import matplotlib.pyplot as plt
@@ -6,7 +7,7 @@ from binary_search_tree import BinarySearchTree
 
 def measure_search_time(tree: BinarySearchTree, values: list,
                         num_searches: int = 1000) -> float:
-    """Измерение времени выполнения операций поиска"""
+    """Измерение времени выполнения операций поиска."""
     start_time = time.perf_counter()
 
     for _ in range(num_searches):
@@ -18,7 +19,7 @@ def measure_search_time(tree: BinarySearchTree, values: list,
 
 
 def analyze_trees():
-    """Анализ сбалансированного и вырожденного деревьев"""
+    """Анализ сбалансированного и вырожденного деревьев."""
     sizes = [100, 500, 1000, 2000, 5000]
 
     print("Анализ производительности BST")
@@ -62,7 +63,7 @@ def analyze_trees():
 
 
 def print_analysis(results):
-    """Анализ результатов"""
+    """Анализ результатов."""
     print("\n=== Анализ результатов ===")
     print("Теоретическая сложность:")
     print("- Сбалансированное дерево: O(log n)")
@@ -80,8 +81,7 @@ def print_analysis(results):
 
 
 def plot_results(results):
-    """Построение графиков результатов"""
-
+    """Построение графиков результатов."""
     sizes = [r['size'] for r in results]
     balanced_times = [r['balanced'] for r in results]
     degenerate_times = [r['degenerate'] for r in results]

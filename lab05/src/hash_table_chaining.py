@@ -4,6 +4,8 @@ from hash_functions import djb2_hash
 
 
 class HashTableChaining:
+    """Метод цепочек."""
+
     def __init__(self, size: int = 10, hash_func: Callable = djb2_hash):
         """
         Хеш-таблица методом цепочек.

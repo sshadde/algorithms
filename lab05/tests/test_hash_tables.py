@@ -1,4 +1,5 @@
 # flake8: noq: E402
+"""Тестирование хеш-таблиц."""
 import sys
 import os
 

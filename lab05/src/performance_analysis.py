@@ -1,3 +1,4 @@
+"""Анализ производительности хеш-таблиц."""
 import time
 import matplotlib.pyplot as plt
 import numpy as np
@@ -8,14 +9,14 @@ from hash_functions import simple_hash, polynomial_hash, djb2_hash
 
 
 class PerformanceAnalyzer:
+    """Реализация анализа."""
+
     def __init__(self):
+        """Инициализация объекта."""
         self.results = {}
 
     def generate_collision_test_data(self, n: int) -> List[Tuple[str, int]]:
-        """
-        Генерация тестовых данных, которые гарантированно создают коллизии.
-        """
-
+        """Генерация тестовых данных, которые создают коллизии."""
         test_data = []
 
         test_data.extend([
@@ -55,7 +56,7 @@ class PerformanceAnalyzer:
 
     def count_collisions_open_addressing(self, table: HashTableOpenAddressing,
                                          data_size: int) -> Dict[str, Any]:
-        """Подсчет коллизий для открытой адресации"""
+        """Подсчет коллизий для открытой адресации."""
         probes_per_insert = []
         occupied_cells = 0
 
@@ -87,7 +88,7 @@ class PerformanceAnalyzer:
 
     def measure_operations_chaining(self, hash_func, load_factor: float,
                                     data_size: int = 500):
-        """Измерение производительности для метода цепочек"""
+        """Измерение производительности для метода цепочек."""
         table_size = max(int(data_size / load_factor), 10)
         table = HashTableChaining(size=table_size, hash_func=hash_func)
         test_data = self.generate_collision_test_data(data_size)
@@ -115,7 +116,7 @@ class PerformanceAnalyzer:
     def measure_operations_open_addressing(self, probe_method: str, hash_func,
                                            load_factor: float,
                                            data_size: int = 500):
-        """Измерение производительности для открытой адресации"""
+        """Измерение производительности для открытой адресации."""
         table_size = max(int(data_size / load_factor), 10)
 
         if load_factor > 0.8:
@@ -164,7 +165,7 @@ class PerformanceAnalyzer:
             }
 
     def run_comparative_analysis(self):
-        """Проведение сравнительного анализа"""
+        """Проведение сравнительного анализа."""
         print("Запуск сравнительного анализа производительности...")
 
         load_factors = [0.1, 0.3, 0.5, 0.7]
@@ -205,7 +206,7 @@ class PerformanceAnalyzer:
                         print("    ✗ ПРОВАЛ")
 
     def plot_performance_comparison(self):
-        """Построение графиков производительности"""
+        """Построение графиков производительности."""
         load_factors = [0.1, 0.3, 0.5, 0.7]
 
         fig, axes = plt.subplots(2, 2, figsize=(15, 12))
@@ -298,7 +299,7 @@ class PerformanceAnalyzer:
                     bbox_inches='tight')
 
     def plot_collision_histograms(self):
-        """Построение гистограмм коллизий"""
+        """Построение гистограмм коллизий."""
         load_factors = [0.1, 0.3, 0.5, 0.7]
 
         fig, axes = plt.subplots(2, 2, figsize=(15, 12))

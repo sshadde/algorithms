@@ -1,11 +1,10 @@
-"""
-Скрипт для запуска полного анализа производительности хеш-таблиц.
-"""
+"""Скрипт для запуска полного анализа производительности хеш-таблиц."""
 
 from performance_analysis import PerformanceAnalyzer
 
 
 def main():
+    """Запуск анализа данных."""
     analyzer = PerformanceAnalyzer()
 
     analyzer.run_comparative_analysis()

@@ -1,3 +1,4 @@
+"""Основной файл для демонстрации."""
 from binary_search_tree import BinarySearchTree
 from tree_traversal import (
     in_order_recursive,
@@ -8,6 +9,7 @@ from tree_traversal import (
 
 
 def main():
+    """Функция, демонстрирующая работу бинарного дерева."""
     print("=== Демонстрация бинарного дерева поиска ===\n")
 
     bst = BinarySearchTree()

@@ -4,6 +4,8 @@ from hash_functions import djb2_hash
 
 
 class HashTableOpenAddressing:
+    """Метод открытой адресации."""
+
     def __init__(self, size: int = 10, probe_method: str = "linear",
                  hash_func: Callable = djb2_hash):
         """

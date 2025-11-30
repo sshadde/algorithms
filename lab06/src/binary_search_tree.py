@@ -1,3 +1,4 @@
+"""Реализация бинарного дерева поиска."""
 from typing import Optional
 
 
@@ -5,6 +6,7 @@ class TreeNode:
     """Узел бинарного дерева поиска."""
 
     def __init__(self, value: int) -> None:
+        """Инициализация узла."""
         self.value = value
         self.left: Optional[TreeNode] = None
         self.right: Optional[TreeNode] = None
@@ -14,6 +16,7 @@ class BinarySearchTree:
     """Бинарное дерево поиска."""
 
     def __init__(self) -> None:
+        """Инициализация дерева."""
         self.root: Optional[TreeNode] = None
 
     def insert(self, value: int) -> None:
@@ -130,13 +133,13 @@ class BinarySearchTree:
         return current
 
     def height(self, node: Optional[TreeNode]) -> int:
-        """Вычисление высоты дерева/поддерева"""
+        """Вычисление высоты дерева/поддерева."""
         if node is None:
             return 0
         return 1 + max(self.height(node.left), self.height(node.right))
 
     def is_valid_bst(self) -> bool:
-        """Проверка, является ли дерево корректным BST"""
+        """Проверка, является ли дерево корректным BST."""
         return self._is_valid_recursive(self.root, float('-inf'), float('inf'))
 
     def _is_valid_recursive(self, node: Optional[TreeNode],
@@ -154,7 +157,7 @@ class BinarySearchTree:
 
     def visualize_tree(self, node: Optional[TreeNode], level: int = 0,
                        prefix: str = "Root: ") -> str:
-        """Текстовая визуализация структуры дерева"""
+        """Текстовая визуализация структуры дерева."""
         if node is None:
             return ""
 
